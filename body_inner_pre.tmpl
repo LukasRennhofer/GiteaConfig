@@ -1,0 +1,801 @@
+<style>
+  /* Variables. */
+  .nav-global {
+    -webkit-font-smoothing: antialiased;
+
+    /*
+    *Variables come from, and match partial _variables, and are prefixed with 'bwa-'.
+    *Sizes must be defined in pixels as default rem-sizing might vary in projects.
+    */
+
+    --bwa-color-bg-primary: hsl(213, 10%, 21%);
+    --bwa-color-bg-tertiary: hsl(213, 10%, 14%);
+
+    --bwa-color-text: hsl(213, 10%, 80%);
+    --bwa-color-text-primary: hsl(213, 10%, 98%);
+
+    /* Colours Components. */
+    --bwa-border-color: hsla(213, 10%, 80%, .15);
+
+    --bwa-btn-color-bg-hover: hsl(213, 10%, 30%);
+
+    /* Colours Status. */
+    --bwa-color-accent: hsl(204deg, 100%, 50%);
+    --bwa-color-accent-bg: hsla(204deg, 100%, 50%, .1);
+    --bwa-color-accent-bg-hover: hsla(204deg, 100%, 50%, .2);
+
+    --bwa-border-radius: 6px;
+    --bwa-border-radius-lg: 12px;
+
+    --bwa-transition-speed: 150ms;
+
+    --bwa-zindex-dropdown: 1040;
+    --bwa-zindex-fixed: 1030;
+
+    /* Grid. */
+    --bwa-spacer: 16px;
+    --bwa-spacer-1: calc(var(--bwa-spacer) * 0.25);
+    --bwa-spacer-2: calc(var(--bwa-spacer) * 0.5);
+    --bwa-spacer-3: var(--bwa-spacer);
+
+    /* Type. */
+    --bwa-fs-base: 14px;
+
+    /* Components. */
+    --bwa-navbar-zindex: calc(var(--bwa-zindex-fixed) + 1);
+  }
+
+  /* Reset. */
+  @namespace svg "http://www.w3.org/2000/svg";
+
+  .nav-global :not(svg|*),
+  .nav-global *::before,
+  .nav-global *::after {
+    all: unset;
+    display: revert;
+    box-sizing: border-box;
+  }
+
+  .nav-global [default-styles] {
+    all: revert;
+  }
+
+  .nav-global * {
+    -webkit-text-size-adjust: 100%;
+
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-variation-settings: 'wght' 400;
+    font-weight: normal;
+  }
+
+  .nav-global {
+    background-color: var(--bwa-color-bg-tertiary);
+    color: var(--bwa-color-text);
+    display: flex;
+    position: relative;
+    z-index: var(--bwa-navbar-zindex);
+  }
+
+  .nav-global h3,
+  .nav-global h4,
+  .nav-global strong {
+    font-variation-settings: 'wght' 500;
+  }
+
+  .nav-global figure,
+  .nav-global section {
+    display: block;
+  }
+
+  .nav-global svg:not(:root) {
+    overflow: hidden;
+    vertical-align: middle;
+  }
+
+  .nav-global .nav-global-container {
+    flex: 1;
+    margin: 0 auto;
+  }
+
+  /* Navigation. */
+  .nav-global nav {
+    align-items: center;
+    display: flex;
+    line-height: var(--bwa-fs-base);
+    font-size: var(--bwa-fs-base);
+    justify-content: space-between;
+    min-height: calc(var(--bwa-spacer) * 4);
+    margin: 0 auto;
+    padding: 0 var(--bwa-spacer);
+    position: relative;
+  }
+
+  /* Links. */
+  .nav-global a:not(.dropdown-item) {
+    color: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color var(--bwa-transition-speed) ease-out, color var(--bwa-transition-speed) ease-out;
+  }
+
+  .nav-global-nav-links {
+    flex-grow: 1;
+  }
+
+  .nav-global-nav-links a:not(.dropdown-item) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .nav-global a:not(.dropdown-item):hover {
+    color: var(--bwa-color-text-primary);
+  }
+
+  /* Navigation items. */
+  .nav-global nav>ul {
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-global nav>ul,
+  .nav-global nav>ul>li,
+  .nav-global nav>ul>li>a,
+  .nav-global-apps-dropdown-container {
+    align-items: center;
+    display: inline-flex;
+    height: 100%;
+  }
+
+  .nav-global-apps-dropdown-container {
+    position: relative;
+  }
+
+  .nav-global nav>ul>li>a {
+    padding: var(--bwa-spacer-2);
+  }
+
+  @media (min-width: 1320px) {
+    .nav-global nav>ul>li>a {
+      padding-left: var(--bwa-spacer);
+      padding-right: var(--bwa-spacer);
+    }
+  }
+
+  .nav-global nav>a.is-active,
+  .nav-global nav>a.is-active svg,
+  .nav-global nav>ul>li>a.is-active {
+    color: var(--bwa-color-text-primary) !important;
+    fill: var(--bwa-color-text-primary);
+    font-variation-settings: 'wght', 500;
+    font-weight: bold;
+  }
+
+  .nav-global .nav-global-links-right {
+    flex-wrap: nowrap;
+    gap: 0 var(--bwa-spacer-2);
+  }
+
+  /* Logo. */
+  .nav-global a.nav-global-logo {
+    margin-right: var(--bwa-spacer);
+    position: relative;
+    top: 2px;
+    white-space: nowrap;
+  }
+
+  .nav-global a.nav-global-logo strong {
+    margin-inline: var(--bwa-spacer-2);
+    font-size: 18px;
+  }
+
+  .nav-global .nav-global-logo svg,
+  .nav-global .nav-global-logo img {
+    height: 21px;
+    pointer-events: none;
+  }
+
+  .nav-global a.nav-global-logo svg {
+    position: relative;
+    top: calc(var(--bwa-spacer-1) * -1);
+  }
+
+  .nav-global svg {
+    fill: var(--bwa-color-text);
+    transition: fill var(--bwa-transition-speed) ease-out;
+  }
+
+  .nav-global .nav-global-logo:hover svg {
+    fill: var(--bwa-color-text-primary);
+  }
+
+  .nav-global .nav-global-logo.is-active,
+  .nav-global .nav-global-logo.is-active svg,
+  // TODO: make classes 'is-active' and 'nav-global-btn-active' consistent
+  .nav-global button.nav-global-btn-active svg {
+    color: var(--bwa-color-text-primary);
+    fill: var(--bwa-color-text-primary);
+  }
+
+  /* Apps button. */
+  .nav-global {
+    --bwa-nav-global-btn-height: calc(var(--bwa-spacer) * 2.25);
+  }
+
+  .nav-global button,
+  .nav-global .nav-global-btn {
+    -webkit-appearance: button;
+
+    align-items: center;
+    background-color: transparent;
+    border-radius: var(--bwa-border-radius);
+    border: 0;
+    color: var(--bwa-btn-color-text);
+    cursor: pointer;
+    display: inline-flex;
+    font: inherit;
+    height: var(--bwa-nav-global-btn-height);
+    margin: 0;
+    outline: 0;
+    overflow: visible;
+    padding: var(--bwa-spacer-1) var(--bwa-spacer-2);
+    text-transform: none;
+    transition: background-color var(--bwa-transition-speed) ease-out, color var(--bwa-transition-speed) ease-out, transform var(--bwa-transition-speed) ease-out;
+    white-space: nowrap;
+  }
+
+  /* Button overrides. */
+  /*
+    *Button overrides for Web Assets button components for BWA projects.
+    */
+  .nav-global button,
+  .nav-global .btn {
+    height: var(--bwa-nav-global-btn-height);
+    line-height: 1;
+  }
+
+  .nav-global .btn-accent {
+    color: white !important;
+  }
+
+  .nav-global .nav-global-btn.nav-global-btn-primary {
+    padding-left: var(--bwa-spacer);
+    padding-right: var(--bwa-spacer);
+  }
+
+  .nav-global button span,
+  .nav-global .nav-global-btn span {
+    white-space: nowrap;
+  }
+
+  .nav-global button:hover,
+  .nav-global .nav-global-btn:hover,
+  .nav-global button.nav-global-btn-active,
+  .nav-global .nav-global-btn.nav-global-btn-active {
+    background-color: var(--bwa-btn-color-bg-hover);
+    color: var(--bwa-color-text-primary);
+    cursor: pointer;
+  }
+
+  .nav-global .nav-global-btn span {
+    margin-left: var(--bwa-spacer-2);
+  }
+
+  .nav-global .nav-global-btn-primary {
+    background-color: var(--bwa-color-accent-bg);
+    color: var(--bwa-color-accent) !important;
+  }
+
+  .nav-global .nav-global-btn-primary:hover {
+    background-color: var(--bwa-color-accent-bg-hover);
+  }
+
+  .nav-global .nav-global-icon {
+    height: 20px;
+    pointer-events: none;
+    width: 20px;
+  }
+
+  .nav-global .nav-global-icon-alt {
+    transform: rotate(90deg);
+  }
+
+  .nav-global .dropdown-toggle.active {
+    color: var(--bwa-color-text-primary)
+  }
+
+  .nav-global button:hover svg,
+  .nav-global .nav-global-btn:hover svg {
+    fill: white;
+  }
+
+  /* Apps dropdown menu. */
+  .nav-global .nav-global-apps-menu {
+    background-color: var(--bwa-color-bg-tertiary);
+    border-radius: var(--bwa-border-radius-lg);
+    border: thin solid var(--bwa-border-color);
+    box-shadow: 0 var(--bwa-spacer-1) var(--bwa-spacer) -2px rgba(0, 0, 0, 0.33), 0px var(--bwa-spacer-1) var(--bwa-spacer) calc(var(--bwa-spacer-1) * -1) rgba(0, 0, 0, 0.33);
+    display: none;
+    padding: var(--bwa-spacer-2);
+    position: absolute;
+    right: 0;
+    top: calc(100% + var(--bwa-spacer));
+    visibility: hidden;
+    width: 640px;
+    z-index: var(--bwa-zindex-dropdown);
+  }
+
+  .nav-global .nav-global-dropdown.is-visible {
+    display: block;
+    visibility: visible;
+  }
+
+  /* Tiny triangle in the corner. */
+  // TODO: consider removing for consistency
+  .nav-global .nav-global-apps-menu::before {
+    background-color: var(--bwa-color-bg-tertiary);
+    border-radius: 3px;
+    border: 2px var(--bwa-color-bg-tertiary) solid;
+    content: '';
+    display: block;
+    height: .85rem;
+    position: absolute;
+    right: .85rem;
+    top: -0.25rem;
+    transform: rotate(45deg);
+    width: 1rem;
+    z-index: -1;
+  }
+
+  .nav-global .nav-global-apps-menu ul {
+    border-bottom: 2px solid rgba(255, 255, 255, .05);
+    display: grid;
+    gap: var(--bwa-spacer-2);
+    grid-template-columns: repeat(2, 1fr);
+    list-style: none;
+    margin: 0 0 var(--bwa-spacer-1) 0;
+    padding: var(--bwa-spacer-1) 0 var(--bwa-spacer-2) 0;
+  }
+
+  .nav-global .nav-global-apps-menu ul>li>a {
+    border-radius: var(--bwa-border-radius-lg);
+    display: flex;
+    flex: 1;
+    height: 100%;
+  }
+
+  .nav-global .nav-global-apps-menu ul>li>a:hover {
+    background-color: rgba(255, 255, 255, .05);
+    color: var(--bwa-color-text-primary);
+    box-shadow: 0px 1px var(--bwa-spacer-1) 0 rgba(0, 0, 0, 0.05), 0 var(--bwa-spacer) 20px -1px rgba(0, 0, 0, 0.025);
+  }
+
+  .nav-global .nav-global-apps-menu ul>li>a:hover h4,
+  .nav-global .nav-global-apps-menu ul>li>a:hover svg {
+    color: var(--bwa-color-accent);
+    fill: var(--bwa-color-accent);
+  }
+
+  .nav-global .nav-global-apps-menu h3 {
+    color: white;
+    display: inline-block;
+    font-size: 12px;
+    line-height: var(--bwa-spacer);
+    margin: 0;
+    margin-top: 2px;
+    opacity: .3;
+    padding-left: var(--bwa-spacer);
+  }
+
+  .nav-global .nav-global-apps-menu h4 {
+    color: var(--bwa-color-text-primary);
+    font-size: 18px;
+    line-height: 20px;
+    margin: var(--bwa-spacer-1) 0 0;
+    padding: var(--bwa-spacer-2) var(--bwa-spacer) 0;
+    transition: color var(--bwa-transition-speed) ease-out;
+  }
+
+  .nav-global .nav-global-apps-menu p {
+    font-size: var(--bwa-fs-base);
+    line-height: 20px;
+    margin: 0;
+    opacity: .8;
+    padding: var(--bwa-spacer-1) var(--bwa-spacer) var(--bwa-spacer-2);
+  }
+
+  .nav-global .nav-global-apps-menu figure {
+    margin: var(--bwa-spacer) 0 0 var(--bwa-spacer);
+  }
+
+  .nav-global .nav-global-apps-menu ul>li>a svg {
+    position: relative;
+    top: -2px;
+  }
+
+  /* Donate section of the menu. */
+  .nav-global .nav-global-apps-menu-section-donate ul {
+    border: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .nav-global .nav-global-apps-menu-section-donate a svg {
+    fill: hsl(352, 90%, 62%) !important;
+    transition: transform var(--bwa-transition-speed) ease-out;
+  }
+
+  .nav-global .nav-global-apps-menu-section-donate ul>li:first-child>a {
+    background-color: hsla(352deg, 90%, 42%, .2);
+  }
+
+  .nav-global .nav-global-apps-menu-section-donate ul>li:first-child>a:hover {
+    background-color: hsla(352deg, 90%, 42%, .5);
+  }
+
+  .nav-global .nav-global-apps-menu-section-donate ul>li:first-child>a:hover svg {
+    fill: hsl(352, 90%, 72%) !important;
+    transform: scale(1.2);
+  }
+
+  .nav-global .nav-global-apps-menu-section-donate ul>li:first-child>a:hover h4 {
+    color: white;
+  }
+
+  /* Mobile. */
+  .nav-global button.nav-global-logo {
+    display: none;
+    visibility: hidden;
+  }
+
+  @media (max-width: 767px) {
+    .nav-global-apps-dropdown-container,
+    .nav-global a.nav-global-logo {
+      display: none;
+    }
+
+    .nav-global button.nav-global-logo {
+      display: flex;
+      visibility: visible;
+    }
+
+    .nav-global button.nav-global-logo strong,
+    .nav-global button.nav-global-logo svg {
+      margin-right: var(--bwa-spacer-2)
+    }
+
+    .nav-global .nav-global-nav-links {
+      align-items: flex-start;
+      background-color: var(--bwa-color-bg-primary);
+      border-radius: 6px;
+      display: none;
+      flex-direction: column;
+      height: auto;
+      padding: var(--bwa-spacer-1);
+      position: absolute;
+      top: 72px;
+      visibility: visible;
+      z-index: var(--bwa-zindex-dropdown);
+    }
+
+    .nav-global .nav-global-nav-links.is-visible {
+      display: flex;
+    }
+
+    .nav-global .nav-global-nav-links li {
+      align-items: center;
+      display: flex;
+      margin-bottom: var(--bwa-spacer-1);
+      width: 100%;
+    }
+
+    .nav-global .nav-global-nav-links li:last-child {
+      margin-bottom: 0;
+    }
+
+    .nav-global .nav-global-nav-links li a {
+      border-radius: 6px;
+      color: var(--bwa-color-text);
+      display: inline-flex;
+      flex: 1;
+      line-height: initial;
+      padding: var(--bwa-spacer-2) var(--bwa-spacer);
+      transition: background-color var(--bwa-transition-speed) var(--bwa-transition-timing-fast), color var(--bwa-transition-speed) var(--bwa-transition-timing-fast);
+      text-decoration: none;
+      white-space: nowrap;
+      width: 100%;
+    }
+
+
+    .nav-global .nav-global-nav-links li a:hover,
+    .nav-global .nav-global-nav-links li a.nav-global-link-active {
+      background-color: var(--bwa-color-accent-bg);
+      color: var(--bwa-color-accent);
+      text-decoration: none;
+    }
+  }
+
+  .nav-global .nav-global-nav-links li a.nav-global-link-active {
+    font-variation-settings: 'wght' 700;
+    font-weight: bold;
+  }
+
+  /* Site-specific tweaks. */
+  /* Make sure to start every line with ".nav-global"
+  * so changes affect the developer navbar only. */
+
+  /* Limit navbar width on large screens (optional). */
+  /*
+  @media (min-width: 1380px) { // grid breakpoint 'xl'
+    .nav-global .nav-global-container {
+      max-width: var(--container-width);
+    }
+  }
+  */
+</style>
+
+<div class="nav-global">
+  <div class="nav-global-container">
+    <nav>
+      <a href="https://voronoid.tech/" class="nav-global-logo">
+        <img src="https://voronoid.tech/assets/icons/ProjectVoronoid-Icon-wbg.png" alt="LRDev Logo">
+        <strong>Developer</strong>
+      </a>
+
+      <button class="nav-global-logo js-dropdown-toggle" data-toggle-menu-id="nav-global-nav-links">
+        <svg fill-rule="nonzero" viewBox="0 0 200 162.05">
+          <path
+            d="M61.1 104.56c.05 2.6.88 7.66 2.12 11.61a61.27 61.27 0 0 0 13.24 22.92 68.39 68.39 0 0 0 23.17 16.64 74.46 74.46 0 0 0 30.42 6.32 74.52 74.52 0 0 0 30.4-6.42 68.87 68.87 0 0 0 23.15-16.7 61.79 61.79 0 0 0 13.23-22.97 58.06 58.06 0 0 0 2.07-25.55 59.18 59.18 0 0 0-8.44-23.1 64.45 64.45 0 0 0-15.4-16.98h.02L112.76 2.46l-.16-.12c-4.09-3.14-10.96-3.13-15.46.02-4.55 3.18-5.07 8.44-1.02 11.75l-.02.02 26 21.14-79.23.08h-.1c-6.55.01-12.85 4.3-14.1 9.74-1.27 5.53 3.17 10.11 9.98 10.14v.02l40.15-.07-71.66 55-.27.2c-6.76 5.18-8.94 13.78-4.69 19.23 4.32 5.54 13.51 5.55 20.34.03l39.1-32s-.56 4.32-.52 6.91zm100.49 14.47c-8.06 8.2-19.34 12.86-31.54 12.89-12.23.02-23.5-4.6-31.57-12.79-3.93-4-6.83-8.59-8.61-13.48a35.57 35.57 0 0 1 2.34-29.25 39.1 39.1 0 0 1 9.58-11.4 44.68 44.68 0 0 1 28.24-9.85 44.59 44.59 0 0 1 28.24 9.77 38.94 38.94 0 0 1 9.58 11.36 35.58 35.58 0 0 1 4.33 14.18 35.1 35.1 0 0 1-1.98 15.05 37.7 37.7 0 0 1-8.61 13.52zm-57.6-27.91a23.55 23.55 0 0 1 8.55-16.68 28.45 28.45 0 0 1 18.39-6.57 28.5 28.5 0 0 1 18.38 6.57 23.57 23.57 0 0 1 8.55 16.67c.37 6.83-2.37 13.19-7.2 17.9a28.18 28.18 0 0 1-19.73 7.79c-7.83 0-14.84-3-19.75-7.8a23.13 23.13 0 0 1-7.19-17.88z" />
+        </svg>
+        <strong>Developer</strong>
+        <svg class="nav-global-icon nav-global-icon-dropdown-toggle" height="100" width="100" viewBox="0 0 1000 1000">
+          <path
+            d="m 206.53824,376.41174 a 42,42 0 0 1 71,-29 l 221,220 220,-220 a 42,42 0 1 1 59,59 l -250,250 a 42,42 0 0 1 -59,0 l -250,-250 a 42,42 0 0 1 -12,-30 z" />
+        </svg>
+      </button>
+
+      <ul class="nav-global-nav-links nav-global-dropdown" id="nav-global-nav-links">
+        <li>
+          <a href="https://voronoid.tech/" class="is-active">Projects</a>
+        </li>
+        <li>
+          <a href="https://voronoid.tech/">Docs</a>
+        </li>
+        <li>
+          <a href="https://voronoid.tech/">Blog</a>
+        </li>
+        <li>
+          <a href="https://voronoid.tech/">Forum</a>
+        </li>
+        <li>
+          <a href="https://voronoid.tech/">Builds</a>
+        </li>
+      </ul>
+
+      <ul class="nav-global-links-right">
+        <li>
+          <div class="nav-global-apps-dropdown-container">
+            <button class="js-dropdown-toggle" data-toggle-menu-id="nav-global-apps-menu">
+              <svg class="nav-global-icon" height="100" width="100" viewBox="0 0 1000 1000">
+                <path
+                  d="m 150.5,899 a 50,50 0 0 1 -49,-50 V 749 a 50,50 0 0 1 49,-50 h 100 a 50,50 0 0 1 50,50 v 100 a 50,50 0 0 1 -50,50 z m 299,0 a 50,50 0 0 1 -50,-50 V 749 a 50,50 0 0 1 50,-50 h 100 a 50,50 0 0 1 50,50 v 100 a 50,50 0 0 1 -50,50 z m 299,0 a 50,50 0 0 1 -50,-50 V 749 a 50,50 0 0 1 50,-50 h 100 a 50,50 0 0 1 50,50 v 100 a 50,50 0 0 1 -50,50 z m -598,-299 a 50,50 0 0 1 -49,-50 V 450 a 50,50 0 0 1 49,-50 h 100 a 50,50 0 0 1 50,50 v 100 a 50,50 0 0 1 -50,50 z m 299,0 a 50,50 0 0 1 -50,-50 V 450 a 50,50 0 0 1 50,-50 h 100 a 50,50 0 0 1 50,50 v 100 a 50,50 0 0 1 -50,50 z m 299,0 a 50,50 0 0 1 -50,-50 V 450 a 50,50 0 0 1 50,-50 h 100 a 50,50 0 0 1 50,50 v 100 a 50,50 0 0 1 -50,50 z m -598,-299 a 50,50 0 0 1 -49,-50 V 151 a 50,50 0 0 1 49,-50 h 100 a 50,50 0 0 1 50,50 v 100 a 50,50 0 0 1 -50,50 z m 299,0 a 50,50 0 0 1 -50,-50 V 151 a 50,50 0 0 1 50,-50 h 100 a 50,50 0 0 1 50,50 v 100 a 50,50 0 0 1 -50,50 z m 299,0 a 50,50 0 0 1 -50,-50 V 151 a 50,50 0 0 1 50,-50 h 100 a 50,50 0 0 1 50,50 v 100 a 50,50 0 0 1 -50,50 z" />
+              </svg>
+            </button>
+
+            <div class="nav-global-apps-menu nav-global-dropdown js-dropdown-menu" id="nav-global-apps-menu">
+              <a href="https://voronoid.tech/" target="_blank">
+                <h3>Voronoid</h3>
+              </a>
+              <ul>
+                <li>
+                  <a href="https://voronoid.tech/" target="_blank">
+                    <figure>
+                      <svg class="nav-global-icon" height="100px" width="100px" viewbox="0 0 1000 1000">
+                        <path d="m 49.15424,599.52895 a 50.360431,50.360431 0 0 0 -49.16137168,50.36043 v 200.24266 c 0,81.53594 68.34629768,149.88226 149.88223168,149.88226 h 700.2498 c 81.53593,0 149.8822,-68.34632 149.8822,-149.88226 V 649.88938 a 50.360431,50.360431 0 1 0 -100.72083,0 v 200.24266 c 0,27.57834 -21.58304,49.16138 -49.16137,49.16138 H 149.8751 c -27.57833,0 -49.16137,-21.58304 -49.16137,-49.16138 V 649.88938 A 50.360431,50.360431 0 0 0 49.15424,599.52895 Z M 249.3969,350.12491 a 50.360431,50.360431 0 0 0 -34.77267,85.13311 l 250.60309,249.40404 a 50.360431,50.360431 0 0 0 70.74442,0 L 785.37577,435.25802 A 50.360431,50.360431 0 1 0 714.63136,364.51361 L 500,579.14497 285.36864,364.51361 A 50.360431,50.360431 0 0 0 249.3969,350.12491 Z M 498.80094,0 A 50.360431,50.360431 0 0 0 449.63957,50.360432 V 649.88938 a 50.360431,50.360431 0 1 0 100.72086,0 V 50.360432 A 50.360431,50.360431 0 0 0 498.80094,0 Z" style="stroke-width:1.19906"></path>
+                      </svg>
+                    </figure>
+                    <div>
+                      <h4>Download</h4>
+                      <p>Get the latest CHIFEngine version, older versions, or experimental builds.</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://voronoid.tech/" target="_blank">
+                    <div>
+                      <h4>What&apos;s New</h4>
+                      <p>Stay up-to-date with the new features in the latest CHIF releases.</p>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+              <a href="https://voronoid.tech/" target="_blank">
+                <h3>LEARNING & RESOURCES</h3>
+              </a>
+              <ul>
+                <li>
+                  <a href="https://voronoid.tech/" target="_blank">
+                    <figure>
+                      <svg class="nav-global-icon" height="100px" width="100px" viewbox="0 0 1000 1000">
+                        <path d="m 146.70939,1.6802353 c -78.362959,0 -143.678322,64.2057377 -143.6783209,143.6570547 -7.2533835,268.45385 0,463.93349 0,709.63356 0,79.45132 65.3153619,143.65705 143.6783209,143.65705 266.17757,0.51388 460.32009,0 709.61228,0 79.45134,0 143.67832,-64.20573 143.67832,-143.65705 0.37471,-118.45983 0,-235.03162 0,-353.72203 0.017,-0.72264 0.017,-1.4456 0,-2.16825 0.43351,-118.60776 0,-235.80643 0,-353.74328 0,-79.451317 -64.22698,-143.6570547 -143.67832,-143.6570547 -241.21275,-1.18614431 -498.91438,-0.041532 -709.61228,0 z m 0,90.3436617 h 82.71228 V 228.07083 H 93.374735 v -82.73354 c 0,-30.47448 22.860165,-53.313393 53.334655,-53.313393 z m 173.05594,0 h 363.5004 c -5.81542,127.740813 0,236.658243 0,362.416273 h -363.5004 c 0.39671,-121.62159 0,-241.06277 0,-362.416273 z m 453.84406,0 h 82.71228 c 30.4745,0 53.33466,22.838913 53.33466,53.313393 v 82.73354 H 773.60939 Z M 93.374735,318.39324 H 229.42167 V 454.44017 H 93.374735 Z m 680.234655,0 H 909.65633 V 454.44017 H 773.60939 Z M 93.374735,545.86796 H 229.42167 V 681.91489 H 93.374735 Z m 226.390595,0 h 363.5004 c -5.81534,127.74773 0,236.67164 0,362.43753 h -363.5004 c 0.3967,-121.62867 0,-241.07685 0,-362.43753 z m 453.84406,0 H 909.65633 V 681.91489 H 773.60939 Z M 93.374735,772.25856 H 229.42167 v 136.04693 h -82.71228 c -30.47449,0 -53.334655,-22.86016 -53.334655,-53.33464 z m 680.234655,0 h 136.04694 v 82.71229 c 0,30.47448 -22.86016,53.33464 -53.33466,53.33464 h -82.71228 z" style="stroke-width:1.08838"></path>
+                      </svg>
+                    </figure>
+                    <div>
+                      <h4>CHIF Studio</h4>
+                      <p>---</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://voronoid.tech/l" target="_blank">
+                    <div>
+                      <h4>Manual</h4>
+                      <p>Documentation on the usage and features in CHIF.</p>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+              <a href="https://voronoid.tech/" target="_blank">
+                <h3>DEVELOPMENT</h3>
+              </a>
+              <ul>
+                <li>
+                  <a href="https://voronoid.tech/" target="_blank">
+                    <figure>
+                      <svg class="nav-global-icon" height="100px" width="100px" viewbox="0 0 1000 1000">
+                        <path d="m 683.36434,818.19976 a 45.841084,45.841084 0 0 1 -33.83509,-13.09745 45.841084,45.841084 0 0 1 0,-64.39581 L 890.74067,499.49508 649.52925,259.37512 a 45.841084,45.841084 0 0 1 0,-64.39582 45.841084,45.841084 0 0 1 64.39581,0 l 272.8636,272.8636 a 45.841084,45.841084 0 0 1 0,64.39581 l -272.8636,272.8636 a 45.841084,45.841084 0 0 1 -30.56072,13.09745 z m -363.45431,0 A 45.841084,45.841084 0 0 1 286.07494,805.10231 L 13.211339,532.23871 a 45.841084,45.841084 0 0 1 0,-64.39581 L 286.07494,194.9793 a 45.841084,45.841084 0 0 1 64.39581,0 45.841084,45.841084 0 0 1 0,64.39582 L 109.25933,499.49508 350.47075,740.7065 a 45.841084,45.841084 0 0 1 0,64.39581 45.841084,45.841084 0 0 1 -30.56072,13.09745 z" style="stroke-width:1.09145"></path>
+                      </svg>
+                    </figure>
+                    <div>
+                      <h4>Developers Blog</h4>
+                      <p>Latest development updates, by CHIF developers.</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://voronoid.tech/" target="_blank">
+                    <div>
+                      <h4>Documentation</h4>
+                      <p>Guidelines, release notes and development docs.</p>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+              <ul>
+                <li>
+                  <a href="https://voronoid.tech/" target="_blank">
+                    <figure>
+                      <svg class="nav-global-icon" height="100px" width="100px" viewbox="0 0 1000 1000">
+                        <path d="M 499.99424,0 A 55.30474,55.30474 0 0 0 444.6895,55.30474 V 944.69526 A 55.30474,55.30474 0 0 0 499.99424,1000 55.30474,55.30474 0 0 0 555.29898,944.69526 V 55.30474 A 55.30474,55.30474 0 0 0 499.99424,0 Z m 332.95711,332.95711 a 55.30474,55.30474 0 0 0 -55.30474,56.43341 V 944.69526 A 55.30474,55.30474 0 0 0 832.95135,1000 55.30474,55.30474 0 0 0 888.25609,944.69526 V 389.39052 A 55.30474,55.30474 0 0 0 832.95135,332.95711 Z M 167.03713,555.30474 a 55.30474,55.30474 0 0 0 -55.30474,55.30474 V 944.69526 A 55.30474,55.30474 0 0 0 167.03713,1000 55.30474,55.30474 0 0 0 222.34187,944.69526 V 610.60948 a 55.30474,55.30474 0 0 0 -55.30474,-55.30474 z" style="stroke-width:1.12867"></path>
+                      </svg>
+                    </figure>
+                    <div>
+                      <h4>Benchmark</h4>
+                      <p>A platform to collect and share results of the CHIF Benchmark.</p>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+              <div class="nav-global-apps-menu-section-donate">
+                <a href="https://voronoid.tech/" target="_blank">
+                  <h3>DONATE</h3>
+                </a>
+                <ul>
+                  <li>
+                    <a href="https://voronoid.tech/" target="_blank">
+                      <figure>
+                        <svg class="nav-global-icon" height="100px" width="100px" viewbox="0 0 1000 1000">
+                          <path d="M 273.67169,58.416076 C 201.59785,62.59427 135.79129,94.975269 86.697523,145.11359 37.603742,194.20736 4.1781939,260.01391 0,332.08775 -4.1781926,403.11704 22.980065,480.41362 86.697523,545.17562 l 45.960127,45.96013 339.47823,338.43367 a 43.871033,43.871033 0 0 0 61.62835,0 L 872.1979,591.13575 918.15804,545.17562 c 109.67766,-110.72213 109.67766,-290.38445 0,-400.06203 -110.72213,-110.722127 -290.38445,-110.722127 -400.06204,0 l -15.66822,14.62368 -15.66822,-14.62368 C 423.04211,80.351592 345.74553,53.193334 273.67169,58.416076 Z m 5.22274,86.697514 c 48.04922,-3.13365 98.18754,12.53458 146.23677,60.5838 l 47.00468,47.00468 a 43.871033,43.871033 0 0 0 61.62835,0 l 45.96013,-47.00468 c 76.25204,-76.25203 199.50874,-76.25203 276.80532,0 77.29658,77.29658 77.29658,200.5533 0,277.84988 L 810.56956,529.50739 502.42778,837.64917 194.286,529.50739 148.32588,483.54727 C 100.27665,434.45349 84.608431,384.31516 86.697523,336.26594 c 3.133646,-47.00467 26.113717,-95.0539 61.628357,-130.56855 35.51464,-35.51464 82.51932,-58.49471 130.56855,-60.5838 z" style="stroke-width:1.04455"></path>
+                        </svg>
+                      </figure>
+                      <div>
+                        <h4>Development Fund</h4>
+                        <p>Support core development with a monthly contribution.</p>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://voronoid.tech/" target="_blank">
+                      <div>
+                        <h4>One-time Donations</h4>
+                        <p>Perform a single donation with more payment options available.</p>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<style>
+  /* Custom styling for projects.blender.org */
+  /* Make sure to start every line with ".nav-global"
+   * so changes affect the developer navbar only. */
+
+
+  /* TODO: remove if custom font 'Inter' is added to Gitea
+   * Don't try to load custom font 'Inter' */
+  .nav-global * {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  }
+
+  /* Limit navbar width on large screens. */
+  @media(min-width: 1200px) {
+    .nav-global .nav-global-container {
+      max-width: 1170px;
+    }
+  }
+
+  /* TODO: @web-assets incriease nav-global-logo height for better antialising on low pixel density screens
+   * .nav-global .nav-global-logo svg,
+   * .nav-global .nav-global-logo img {
+	 *   height: 22px;
+	 *   pointer-events: none;
+   *  }
+   */
+</style>
+
+<script>
+  /* Simple dropdown toggle.
+  * Synced with 'navbar.js' manually. */
+  function dropdownToggle() {
+    let dropdownToggleBtn = this;
+    let dropdownMenuName;
+    let dropdownMenuItem;
+
+    if (dropdownToggleBtn.hasAttribute('data-toggle-menu-id')) {
+      dropdownMenuName = dropdownToggleBtn.getAttribute('data-toggle-menu-id');
+      dropdownMenuItem = document.getElementById(dropdownMenuName);
+    } else {
+      dropdownMenuItem = dropdownToggleBtn.nextElementSibling;
+    }
+
+    if (!dropdownMenuItem) {
+      return;
+    }
+
+    dropdownToggleBtn.classList.toggle('active');
+    dropdownMenuItem.classList.toggle('is-visible');
+  }
+
+  window.onload = function(e) {
+    const dropdownToggles = document.querySelectorAll('.js-dropdown-toggle, .js-show-toggle');
+
+    for (var i = 0; i < dropdownToggles.length; i++) {
+      dropdownToggles[i].addEventListener('click', dropdownToggle, false);
+    }
+
+    /* Close all menus, to prevent multiple menus open at the same time. */
+    document.onclick = function (e) {
+      const targetMenuId = e.target.getAttribute('data-toggle-menu-id');
+      const targetMenuElement = document.getElementById(targetMenuId);
+
+      /* If the clicked element is not a menu, or it's not the menu
+      * that we are trying to open, close it. */
+      if (!e.target.classList.contains('.js-dropdown-toggle') || targetMenuElement && targetMenuElement.classList.contains('is-visible')) {
+        const dropdownMenus = document.querySelectorAll('.dropdown-menu, .js-dropdown-menu');
+
+        if (dropdownMenus.length == 0) { return };
+
+        for (var i = 0; i < dropdownMenus.length; i++) {
+          if (dropdownMenus[i].id && dropdownMenus[i].id != targetMenuId) {
+            dropdownMenus[i].classList.remove('is-visible', 'active');
+          }
+        }
+
+        for (var i = 0; i < dropdownToggles.length; i++) {
+          if (dropdownToggles[i].id && dropdownToggles[i].id != targetMenuId) {
+            dropdownToggles[i].classList.remove('is-active', 'active');
+          }
+        }
+      };
+    }
+  };
+</script>
